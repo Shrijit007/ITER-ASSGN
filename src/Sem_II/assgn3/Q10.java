@@ -1,6 +1,6 @@
 //write a recursive method to find fibonacci sum
 
-package assgn3;
+package Sem_II.assgn3;
 
 public class Q10 {
     public static void main(String[] args) {

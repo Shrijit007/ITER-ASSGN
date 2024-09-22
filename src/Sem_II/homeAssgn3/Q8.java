@@ -1,4 +1,4 @@
-package homeAssgn3;
+package Sem_II.homeAssgn3;
 
 public class Q8 {
     static void TowerOfHanoi(int n,char from,char to,char aux){

@@ -1,5 +1,5 @@
-package assgn2.Q8_Sports;
-import assgn2.Q8.*;
+package Sem_II.assgn2.Q8_Sports;
+import Sem_II.assgn2.Q8.*;
 
 interface sports{
     int score1 = 97;

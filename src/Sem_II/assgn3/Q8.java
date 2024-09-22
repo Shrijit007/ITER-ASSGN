@@ -1,4 +1,4 @@
-package assgn3;
+package Sem_II.assgn3;
 
 public class Q8 {
     public static double power(double x,int n){

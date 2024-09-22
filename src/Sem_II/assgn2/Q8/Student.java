@@ -1,4 +1,4 @@
-package assgn2.Q8;
+package Sem_II.assgn2.Q8;
 public class Student{
      String name;
      int roll;

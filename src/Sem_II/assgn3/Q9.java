@@ -1,6 +1,6 @@
 //write a recursive method to reverse a number
 
-package assgn3;
+package Sem_II.assgn3;
 
 public class Q9 {
     public static void main(String[] args) {
