@@ -1,4 +1,4 @@
-package assgn3;
+package Sem_II.assgn3;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package assgn7;
+package Sem_II.assgn7;
 import java.util.Scanner;
 class Node {
     int info;

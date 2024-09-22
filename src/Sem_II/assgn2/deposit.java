@@ -1,4 +1,4 @@
-package assgn2;
+package Sem_II.assgn2;
 
 public class deposit {
     long principal;

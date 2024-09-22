@@ -1,4 +1,4 @@
-package homeAssgn1;
+package Sem_II.homeAssgn1;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package assgn2;
+package Sem_II.assgn2;
 import java.util.Scanner;;
 public class person {
     String name;

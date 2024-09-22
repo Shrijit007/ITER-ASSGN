@@ -1,4 +1,4 @@
-package assgn6;
+package Sem_II.assgn6;
 import java.util.Scanner;
 
 public class PartI {
