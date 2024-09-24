@@ -12,8 +12,7 @@ public class Q1 {
 		for (int i = 0; i < arr.length; i++) {
 			arr[i] = sc.nextInt();	
 		}
-		int sum = sumOfNums(arr);
-		System.out.println("Sum of array elements:" + sum);
+		System.out.println("Sum of array elements:" + sumOfNums(arr));
 	}
 	
 	public static int sumOfNums(int arr[]) {
