@@ -10,10 +10,16 @@ public class Q5 {
         System.out.println("Nth Fibonacci number: "+nthfibbonacci(n));
     }
 
-    public static int nthfibbonacci(int n){
-        if(n <= 1){
+    public static int nthfibbonacci(int n) {
+        if (n <= 1) {
             return n;
         }
-        return nthfibbonacci(n-1) + nthfibbonacci(n-2);
+        int a = 0, b = 1, c;
+        for (int i = 2; i <= n; i++) {
+            c = a + b;
+            a = b;
+            b = c;
+        }
+        return b;
     }
 }
