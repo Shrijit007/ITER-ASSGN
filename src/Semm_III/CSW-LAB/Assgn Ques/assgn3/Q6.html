@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Q6</title>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#btn1").click(function() {
+                $(".div").addClass("highlight");
+                $(".div").removeClass("dim");
+            });
+            $("#btn2").click(function() {
+                $(".div").removeClass("highlight");
+                $(".div").addClass("dim");
+            });
+        });
+    </script>
+    <style>
+        button {
+            padding: 10px;
+            border: 1px solid black;
+            position: relative;
+            top: 15px;
+        }
+        .div {
+            position: relative;
+            top: 100px;
+            height: 250px;
+            width: 250px;
+            background-color: cyan;    
+        }
+        .highlight {
+            background-color: yellow;
+        }
+        .dim {
+            opacity: 0.2;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <button id="btn1">ADD HIGHLIGHT</button>
+        <button id="btn2">ADD DIM</button>
+        <div class="div"></div>
+    </center>
+</body>
+</html>

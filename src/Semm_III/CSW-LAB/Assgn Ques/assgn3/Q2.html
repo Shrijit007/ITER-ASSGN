@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Q2</title>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+		$(".div").click(function(){
+			$("h1").text("CLICKED!");
+		});
+		$(".div").dblclick(function(){
+			$(this).css({"background-color":"orange"});
+		});
+		$(".div").mouseenter(function(){
+			$(this).css({"border-color":"green"});
+		});
+		$(".div").mouseleave(function(){
+			$(this).css({"border-color":"black"});
+		});
+	});
+    </script>
+    <style>
+	.div{
+		border-radius:20px;
+		background-color:cyan;	
+		height:300px;
+		width:400px;
+		border:5px solid black;
+	}
+	h1{
+		position:relative;
+		font-family:monospace;
+		top:38%;
+		color:black;
+	}
+    </style>
+</head>
+<body>
+	<center><div class="div"><h1>CLICK ME!</h1></div></center>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+        <head>
+	<title> Q10 </title>
+	<style>
+		img{
+			height:10vh;
+		}
+		.forms{
+			background-color:grey;
+			margin:4vh;
+			padding:4vh;
+			width:45vh;
+		}
+		.forms img{
+			display: block;
+			margin-left: auto;
+			margin-right: auto;	
+		}
+		form{
+			padding-bottom:10px;
+		}
+		input[type=text],input[type=password],input[type=email],select{
+			border:2px solid blue;
+			border-radius:5px;
+			position:absolute;
+			left:23vh;
+			width:30vh;
+			height:4vh;
+		}
+		input[type=radio]{
+			position:relative;
+			left:8vh;
+		}
+		.gen{
+			position:relative;
+			left:8vh;
+			padding-right:5vh;	
+		}
+		input[type=submit]{
+			width:45vh;
+			height:5vh;
+			border-radius:5px;
+			border:none;
+			color:red;
+			background-color:orange;
+		}
+		input[type=submit]:hover{
+			background-color:rgb(255, 217, 0);
+		}	
+	</style>
+	</head>
+	<body>
+	<div class="forms">
+	<img src="https://upload.wikimedia.org/wikipedia/en/c/c5/Siksha_%E2%80%98O%E2%80%99_Anusandhan.png"><br><h3>Registration</h3>
+	<form action="/action_page.php"> 
+		<label for="name">UserName</label>
+		<input type="text" id="name" name="name" placeholder="Enter Your Name"><br><br><br>
+		<label for="mail">Email:</label>
+		<input type="email" id="mail" name="email" placeholder="Enter Email"><br><br> <br>
+		<label for="name">Mobile:</label>
+		<input type="text" id="name" name="name" placeholder="Enter MobileNo."><br><br><br>
+		<label>Gender:</label> 
+		<input type="radio" id="gen1" name="gender" value="male">
+		<label  class="gen" for="gen1">Male</label> 
+		<input type="radio" id="gen2" name="gender" value="female">
+		<label class="gen" for="gen2">Female</label><br><br>
+		<label for="city">City:</label>
+		<select id="city" name="city">
+		<option value="bbsr">Bhubaneswar</option>
+		<option value="rkl">Rourkela</option>
+		<option value="rnc">Ranchi</option>
+		<option value="dl">Delhi</option>
+		<option value="mh">Mumbai</option></select><br><br><br>
+		<label for="pass">Password:</label>
+		<input type="password" id="pass" name="pass" placeholder="Enter Password"><br>
+		<br><br><center><input type="submit" value="Sign Up"></center>
+	</form>
+	</div>
+	</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Q7</title>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $("#btn1").click(function() {
+            var serialNo = $("#input1").val();
+            var name = $("#input2").val();
+            var age = $("#input3").val();
+
+            $("table").append(
+                "<tr>" +
+                    "<td>" + serialNo + "</td>" +
+                    "<td>" + name + "</td>" +
+                    "<td>" + age + "</td>" +
+                "</tr>"
+            );
+
+            $("#input1").val('');
+            $("#input2").val('');
+            $("#input3").val('');
+        });
+
+        $("#btn2").click(function() {
+            $("table").css({"color": "red"});
+        });
+    });
+</script>
+
+    <style>
+        button {
+            padding: 10px;
+            border: 1px solid black;
+            position: relative;
+            top: 15px;
+        }
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid grey;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+	input{
+		padding:10px;
+		font-family:monospace;
+	}
+    </style>
+</head>
+<body>
+    <table>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Age</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>A</td>
+                <td>30</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>B</td>
+                <td>25</td>
+            </tr>
+    </table>
+    <center><br><br>
+	<input type="text" id="input1" placeholder="Input serial no."><br><br>
+	<input type="text" id="input2" placeholder="Input name"><br><br>
+	<input type="text" id="input3" placeholder="Input age"><br><br>
+        <button id="btn1">ADD ROW</button>
+        <button id="btn2">CHANGE COLOR</button>
+    </center>
+</body>
+</html>
+
+
+

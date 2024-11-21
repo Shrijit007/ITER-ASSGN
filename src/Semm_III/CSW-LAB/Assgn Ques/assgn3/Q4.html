@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Q4</title>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#btn1").click(function(){
+                alert($("p").text());
+            });
+            $("#btn2").click(function(){
+                alert($("body").html());
+            });
+	});
+    </script>
+    <style>
+	p{
+		font-family:monospace;
+		font-size:20px;
+		position:relative;
+		top:25px;
+	}
+	button{
+		padding:10px;
+		border:1px solid black;
+		position:relative;
+		top:15px;
+	}
+    </style>
+</head>
+<body>
+    <center>
+    <button id="btn1">Fetch TEXT</button>
+    <button id="btn2">Fetch HTML</button>
+    </center>
+    <p>Hello, I am a paragraph.</p>
+</body>
+</html>
