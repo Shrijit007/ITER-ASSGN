@@ -1,0 +1,52 @@
+<head>
+    <title>Q9</title>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $("#btn1").click(function() {
+	    $(".popup").slideDown();
+        });
+        $("#btn2").click(function() {
+	    $(".popup").slideUp();
+        });
+    });
+    </script>
+    <style>
+        #btn1 {
+            padding: 10px;
+            border: 1px solid black;
+            position: absolute;
+            top: 200px;
+        }
+	.popup{
+	    display:none;
+	    font-family:georgia;
+	    text-align:center;
+	    position:relative;
+	    top:5px;
+	    height:100px;
+	    background-color:beige;
+	    border: 1px solid black;
+	    border-radius:20px;
+	    width:430px;
+	}
+	#btn2{
+	    padding:5px;
+	    border-radius:20px;
+	    border: 1px solid black;
+	    position:absolute;
+	    bottom:5px;
+	    right:5px;
+	}
+    </style>
+</head>
+<body>  
+	<center>
+	<div class="popup">
+	<p>Hello, I am A Custom ALERT made using a div.</p>
+        <button id="btn2">OK</button>
+	</div>
+        <button id="btn1">ALERT</button>
+    </center>
+</body>
+</html>

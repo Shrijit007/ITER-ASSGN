@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Styled Dropdown</title>
+    <style>
+        /* Dropdown container */
+
+        /* Dropdown button */
+        .dropdown-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .dropdown-btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Dropdown menu */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            min-width: 200px;
+            z-index: 1;
+        }
+
+        /* Dropdown menu items */
+        .dropdown-content a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+            transition: all 0.3s ease;
+        }
+
+        /* Style each item differently */
+        .dropdown-content a:nth-child(1) {
+            font-family: "Arial, sans-serif";
+            color: red;
+            font-size: 14px;
+        }
+
+        .dropdown-content a:nth-child(2) {
+            font-family: "Courier New, monospace";
+            color: blue;
+            font-size: 16px;
+        }
+
+        .dropdown-content a:nth-child(3) {
+            font-family: "Georgia, serif";
+            color: green;
+            font-size: 18px;
+        }
+
+        .dropdown-content a:nth-child(4) {
+            font-family: "Verdana, sans-serif";
+            color: purple;
+            font-size: 20px;
+        }
+
+        /* Hover effect on menu items */
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        /* Show dropdown on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Dropdown container -->
+    <div class="dropdown">
+        <!-- Button to trigger the dropdown -->
+        <button class="dropdown-btn">Hover to See Options</button>
+
+        <!-- Dropdown menu -->
+        <div class="dropdown-content">
+            <a href="#">Option 1: Red Text</a>
+            <a href="#">Option 2: Blue Courier</a>
+            <a href="#">Option 3: Green Georgia</a>
+            <a href="#">Option 4: Purple Verdana</a>
+        </div>
+    </div>
+</body>
+</html>

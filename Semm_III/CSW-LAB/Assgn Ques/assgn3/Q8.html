@@ -1,0 +1,46 @@
+<head>
+    <title>Q8</title>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $("#btn1").click(function() {
+            var elementId = $("#input1").val();
+            $("#" + elementId).remove();
+        });
+    });
+    </script>
+
+    <style>
+        button {
+            padding: 10px;
+            border: 1px solid black;
+            position: relative;
+            top: 15px;
+        }
+        input {
+            padding: 10px;
+            font-family: monospace;
+        }
+        p {
+            font-family: monospace;
+            font-size: 20px;
+            position: relative;
+            top: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p id="p1">Hello, I’ve id: p1.</p>
+        <p id="p2">Hello, I’ve id: p2.</p>
+        <p id="p3">Hello, I’ve id: p3.</p>
+        <p id="p4">Hello, I’ve id: p4.</p>
+        <p id="p5">Hello, I’ve id: p5.</p>
+    </div>
+    <center>
+        <br>
+        <input type="text" id="input1" placeholder="Input id"><br><br>
+        <button id="btn1">REMOVE ID</button>
+    </center>
+</body>
+</html>
