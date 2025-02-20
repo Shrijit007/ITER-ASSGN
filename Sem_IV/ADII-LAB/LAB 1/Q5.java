@@ -1,49 +1,85 @@
 import java.util.*;
 
 public class Q5 {
+    private static int V; // Number of vertices
+    private static int[][] graph; // Adjacency matrix
 
-    public static void primsAlgorithm(int[][] graph) {
-        int vertices = graph.length;
-        int[] parent = new int[vertices];
-        int[] key = new int[vertices];
-        boolean[] mstSet = new boolean[vertices];
+    static class Edge implements Comparable<Edge> {
+        int src, dest, weight;
 
-        Arrays.fill(key, Integer.MAX_VALUE);
-        key[0] = 0;
-        parent[0] = -1;
+        public Edge(int src, int dest, int weight) {
+            this.src = src;
+            this.dest = dest;
+            this.weight = weight;
+        }
 
-        for (int count = 0; count < vertices - 1; count++) {
-            int u = minKey(key, mstSet);
-            mstSet[u] = true;
+        public int compareTo(Edge compareEdge) {
+            return this.weight - compareEdge.weight;
+        }
+    }
 
-            for (int v = 0; v < vertices; v++) {
-                if (graph[u][v] != 0 && !mstSet[v] && graph[u][v] < key[v]) {
-                    parent[v] = u;
-                    key[v] = graph[u][v];
+    static class Subset {
+        int parent, rank;
+    }
+
+    private static int find(Subset[] subsets, int i) {
+        if (subsets[i].parent != i)
+            subsets[i].parent = find(subsets, subsets[i].parent);
+        return subsets[i].parent;
+    }
+
+    private static void union(Subset[] subsets, int x, int y) {
+        int rootX = find(subsets, x);
+        int rootY = find(subsets, y);
+
+        if (subsets[rootX].rank < subsets[rootY].rank) {
+            subsets[rootX].parent = rootY;
+        } else if (subsets[rootX].rank > subsets[rootY].rank) {
+            subsets[rootY].parent = rootX;
+        } else {
+            subsets[rootY].parent = rootX;
+            subsets[rootX].rank++;
+        }
+    }
+
+    public static void kruskalMST(int[][] graphInput) {
+        V = graphInput.length;
+        graph = graphInput;
+        List<Edge> edges = new ArrayList<>();
+
+        for (int i = 0; i < V; i++) {
+            for (int j = i + 1; j < V; j++) {
+                if (graph[i][j] != 0) {
+                    edges.add(new Edge(i, j, graph[i][j]));
                 }
             }
         }
 
-        printMST(parent, graph);
-    }
+        Collections.sort(edges);
+        Edge[] result = new Edge[V - 1];
+        Subset[] subsets = new Subset[V];
 
-    private static int minKey(int[] key, boolean[] mstSet) {
-        int min = Integer.MAX_VALUE, minIndex = -1;
+        for (int v = 0; v < V; v++) {
+            subsets[v] = new Subset();
+            subsets[v].parent = v;
+            subsets[v].rank = 0;
+        }
 
-        for (int v = 0; v < key.length; v++) {
-            if (!mstSet[v] && key[v] < min) {
-                min = key[v];
-                minIndex = v;
+        int e = 0, i = 0;
+        while (e < V - 1 && i < edges.size()) {
+            Edge nextEdge = edges.get(i++);
+            int x = find(subsets, nextEdge.src);
+            int y = find(subsets, nextEdge.dest);
+
+            if (x != y) {
+                result[e++] = nextEdge;
+                union(subsets, x, y);
             }
         }
 
-        return minIndex;
-    }
-
-    private static void printMST(int[] parent, int[][] graph) {
-        System.out.println("Edge \tWeight");
-        for (int i = 1; i < graph.length; i++) {
-            System.out.println(parent[i] + " - " + i + "\t" + graph[i][parent[i]]);
+        System.out.println("Edges in MST:");
+        for (i = 0; i < e; i++) {
+            System.out.println(result[i].src + " - " + result[i].dest + " : " + result[i].weight);
         }
     }
 
@@ -56,22 +92,22 @@ public class Q5 {
             {0, 5, 7, 9, 0}
         };
 
-        primsAlgorithm(graph);
+        kruskalMST(graph);
     }
 }
 
 
 // 1. **Initialize**:
-//    - Create arrays `key[]`, `parent[]`, and `mstSet[]`.
-//    - Set all values in `key[]` to infinity and `mstSet[]` to false.
-//    - Set `key[0]` to 0 and `parent[0]` to -1.
+//    - Create a list of all edges in the graph.
+//    - Sort all the edges in non-decreasing order of their weight.
+//    - Create an array `subsets` to keep track of the subsets of vertices.
 
 // 2. **Construct MST**:
-//    - Repeat for `vertices - 1` times:
-//      - Pick the minimum key vertex `u` from the set of vertices not yet included in MST.
-//      - Include `u` in `mstSet`.
-//      - Update `key[]` and `parent[]` for the adjacent vertices of `u`:
-//        - For each adjacent vertex `v`, if `graph[u][v]` is smaller than `key[v]` and `v` is not in `mstSet`, update `key[v]` and `parent[v]`.
+//    - Initialize an empty result array to store the edges of the MST.
+//    - For each edge in the sorted list:
+//      - Find the root of the sets to which the two vertices of the edge belong.
+//      - If the roots are different, add the edge to the result and union the two sets.
+//      - If the roots are the same, discard the edge to avoid a cycle.
 
 // 3. **Print MST**:
-//    - Print the edges and weights of the MST using the `parent[]` array.
+//    - Print the edges and weights of the MST.
