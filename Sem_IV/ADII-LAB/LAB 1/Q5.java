@@ -1,85 +1,75 @@
 import java.util.*;
 
 public class Q5 {
-    private static int V; // Number of vertices
-    private static int[][] graph; // Adjacency matrix
+    static int V;
 
     static class Edge implements Comparable<Edge> {
         int src, dest, weight;
 
-        public Edge(int src, int dest, int weight) {
+        Edge(int src, int dest, int weight) {
             this.src = src;
             this.dest = dest;
             this.weight = weight;
         }
 
-        public int compareTo(Edge compareEdge) {
-            return this.weight - compareEdge.weight;
+        public int compareTo(Edge other) {
+            return this.weight - other.weight;
         }
     }
 
-    static class Subset {
-        int parent, rank;
+    static int findParent(int[] parent, int node) {
+        if (parent[node] == node) return node;
+        return parent[node] = findParent(parent, parent[node]);
     }
 
-    private static int find(Subset[] subsets, int i) {
-        if (subsets[i].parent != i)
-            subsets[i].parent = find(subsets, subsets[i].parent);
-        return subsets[i].parent;
-    }
-
-    private static void union(Subset[] subsets, int x, int y) {
-        int rootX = find(subsets, x);
-        int rootY = find(subsets, y);
-
-        if (subsets[rootX].rank < subsets[rootY].rank) {
-            subsets[rootX].parent = rootY;
-        } else if (subsets[rootX].rank > subsets[rootY].rank) {
-            subsets[rootY].parent = rootX;
-        } else {
-            subsets[rootY].parent = rootX;
-            subsets[rootX].rank++;
+    static void union(int[] parent, int[] rank, int u, int v) {
+        int rootU = findParent(parent, u);
+        int rootV = findParent(parent, v);
+        
+        if (rootU != rootV) {
+            if (rank[rootU] < rank[rootV]) {
+                parent[rootU] = rootV;
+            } else if (rank[rootU] > rank[rootV]) {
+                parent[rootV] = rootU;
+            } else {
+                parent[rootV] = rootU;
+                rank[rootU]++;
+            }
         }
     }
 
-    public static void kruskalMST(int[][] graphInput) {
-        V = graphInput.length;
-        graph = graphInput;
+    public static void kruskalMST(int[][] graph) {
+        V = graph.length;
         List<Edge> edges = new ArrayList<>();
 
         for (int i = 0; i < V; i++) {
             for (int j = i + 1; j < V; j++) {
-                if (graph[i][j] != 0) {
+                if (graph[i][j] > 0) {
                     edges.add(new Edge(i, j, graph[i][j]));
                 }
             }
         }
 
         Collections.sort(edges);
-        Edge[] result = new Edge[V - 1];
-        Subset[] subsets = new Subset[V];
-
-        for (int v = 0; v < V; v++) {
-            subsets[v] = new Subset();
-            subsets[v].parent = v;
-            subsets[v].rank = 0;
-        }
-
-        int e = 0, i = 0;
-        while (e < V - 1 && i < edges.size()) {
-            Edge nextEdge = edges.get(i++);
-            int x = find(subsets, nextEdge.src);
-            int y = find(subsets, nextEdge.dest);
-
-            if (x != y) {
-                result[e++] = nextEdge;
-                union(subsets, x, y);
-            }
+        int[] parent = new int[V];
+        int[] rank = new int[V];
+        for (int i = 0; i < V; i++) {
+            parent[i] = i;
+            rank[i] = 0;
         }
 
         System.out.println("Edges in MST:");
-        for (i = 0; i < e; i++) {
-            System.out.println(result[i].src + " - " + result[i].dest + " : " + result[i].weight);
+        int count = 0;
+        for (Edge edge : edges) {
+            if (count == V - 1) break;
+            int u = findParent(parent, edge.src);
+            int v = findParent(parent, edge.dest);
+
+            if (u != v) {
+                System.out.println(edge.src + " - " + edge.dest + " : " + edge.weight);
+                union(parent, rank, u, v);
+                count++;
+            }
         }
     }
 
@@ -95,6 +85,7 @@ public class Q5 {
         kruskalMST(graph);
     }
 }
+
 
 
 // 1. **Initialize**:
