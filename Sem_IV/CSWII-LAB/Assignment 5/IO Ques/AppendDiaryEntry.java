@@ -1,8 +1,7 @@
 //Q9
 
 import java.io.*;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Scanner;
 
 public class AppendDiaryEntry {
@@ -20,7 +19,7 @@ public class AppendDiaryEntry {
 
         BufferedWriter bw = new BufferedWriter(new FileWriter(diaryFile, true));
 
-        bw.write(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + "\n");
+        bw.write(new Date() + "\n");
         bw.write("Entry: " + newEntry + "\n");
         bw.close();
 
